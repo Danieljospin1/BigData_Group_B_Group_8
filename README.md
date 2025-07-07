@@ -1,6 +1,8 @@
 # Group work from Big Data group 8 in team 8
 ## Group members:
 1.BISUBIZO Daniel Jospin-26695
+2. Teta kevin-27973
+
 
 ---
 
