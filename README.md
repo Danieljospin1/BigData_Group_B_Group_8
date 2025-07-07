@@ -8,94 +8,43 @@
 
 ---
 
-# ----------------------------------------------
-# Question I: Student Management System Function
-# ----------------------------------------------
+## Question I: Student Management System Function
+
+### Problem Statement:
+
+Create a system that:
+- Inputs student info (name, age, and marks of 2–3 courses)
+- Calculates the average grade
+- Displays student data and average
+- Uses **separate functions** for input, processing, and output
+
+### Python Solution:
+
+```python
+def input_student_info():
+    name = input("Enter student name: ")
+    age = int(input("Enter student age: "))
+    marks = []
+    num_courses = int(input("Enter number of courses (2 or 3): "))
+    
+    for i in range(num_courses):
+        mark = float(input(f"Enter mark for course {i+1}: "))
+        marks.append(mark)
+    
+    return name, age, marks
+
+def calculate_average(marks):
+    return sum(marks) / len(marks)
+
+def display_student_info(name, age, average):
+    print("\n--- Student Report ---")
+    print(f"Name: {name}")
+    print(f"Age: {age}")
+    print(f"Average Grade: {average:.2f}")
 
 def student_management_system():
-    students = []
-    num_students = int(input("Enter the number of students: "))
+    name, age, marks = input_student_info()
+    average = calculate_average(marks)
+    display_student_info(name, age, average)
 
-    for i in range(num_students):
-        name = input(f"Enter student {i + 1} name: ")
-        num_courses = int(input(f"Enter number of courses for {name}: "))
-        grades = []
-
-        for j in range(num_courses):
-            grade = float(input(f"Enter grade for course {j + 1}: "))
-            grades.append(grade)
-
-        average = sum(grades) / len(grades)
-        students.append((name, average))
-
-    print("\n--- Student Results ---")
-    for student in students:
-        print(f"Student: {student[0]} - Average Grade: {student[1]:.2f}")
-
-# Sample Output:
-# Enter the number of students: 2
-# Enter student 1 name: Alice
-# Enter number of courses for Alice: 3
-# Enter grade for course 1: 75
-# Enter grade for course 2: 85
-# Enter grade for course 3: 80
-# Enter student 2 name: Bob
-# Enter number of courses for Bob: 2
-# Enter grade for course 1: 60
-# Enter grade for course 2: 70
-# --- Student Results ---
-# Student: Alice - Average Grade: 80.00
-# Student: Bob - Average Grade: 65.00
-
-# -------------------------------
-# Question II: Check Palindrome
-# -------------------------------
-
-def check_palindrome():
-    text = input("Enter a string: ")
-    if text == text[::-1]:
-        print("Yes, it is a palindrome")
-    else:
-        print("No, it is not a palindrome")
-
-# Sample Output:
-# Enter a string: madam
-# Yes, it is a palindrome
-
-# Enter a string: hello
-# No, it is not a palindrome
-
-# ----------------------------------------
-# Question III: Iterating Over Two Inputs
-# ----------------------------------------
-
-def iterate_two_inputs():
-    text1 = input("Enter first text: ")
-    text2 = input("Enter second text: ")
-
-    combined = text1 + text2
-    characters = [char for char in combined]
-
-    print("\nCombined Characters:", characters)
-    print("\nThank you for using my application")
-
-# Sample Output:
-# Enter first text: Big
-# Enter second text: Data
-# Combined Characters: ['B', 'i', 'g', 'D', 'a', 't', 'a']
-# Thank you for using my application
-
-# ---------------------------
-# Run all functions together:
-# ---------------------------
-
-if __name__ == "__main__":
-    print("\n--- Question I ---")
-    student_management_system()
-
-    print("\n--- Question II ---")
-    check_palindrome()
-
-    print("\n--- Question III ---")
-    iterate_two_inputs()
-
+student_management_system()
